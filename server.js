@@ -1,4 +1,5 @@
 require('dotenv').config(); // Load environment variables
+console.log("Loaded SECRET_KEY:", process.env.SECRET_KEY); // Debugging line
 
 const express = require('express');
 const bodyParser = require('body-parser');
