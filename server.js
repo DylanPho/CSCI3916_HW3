@@ -23,8 +23,15 @@ const router = express.Router();
 router.post('/signup', async (req, res) => {
     try {
         const { name, username, password } = req.body;
-        const user = new User({ name, username, password });
-        await user.save();
+
+        // Check if the username already exists
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: "Username already exists. Please choose another." });
+        }
+
+        const newUser = new User({ name, username, password });
+        await newUser.save();
         res.status(201).json({ success: true, message: "User registered successfully" });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
