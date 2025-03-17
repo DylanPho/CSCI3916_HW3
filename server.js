@@ -3,7 +3,6 @@ console.log("Loaded SECRET_KEY:", process.env.SECRET_KEY); // Debugging line
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const passport = require('passport');
 const authJwtController = require('./auth_jwt'); 
 const jwt = require('jsonwebtoken');
@@ -19,10 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 const router = express.Router();
-
-mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.error("MongoDB connection error:", err));
 
 // Signup
 router.post('/signup', async (req, res) => {
