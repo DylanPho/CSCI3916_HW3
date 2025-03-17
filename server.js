@@ -1,13 +1,14 @@
-require('dotenv').config(); // Load environment variables
-
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const authJwtController = require('./auth_jwt'); 
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const User = require('./Users');
 const Movie = require('./Movies');
+
+require('dotenv').config(); // Load environment variables
 
 const app = express();
 app.use(cors());
@@ -17,6 +18,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 const router = express.Router();
+
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB connection error:", err));
 
 // Signup
 router.post('/signup', async (req, res) => {
