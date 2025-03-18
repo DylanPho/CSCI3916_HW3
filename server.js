@@ -70,7 +70,7 @@ router.get('/movies', async (req, res) => {
 
 app.use('/', router);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app;
