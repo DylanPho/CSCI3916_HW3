@@ -59,6 +59,15 @@ router.post('/signin', async (req, res) => {
     }
 });
 
+router.get('/movies', async (req, res) => {
+    try {
+        const movies = await Movie.find(); // Fetch all movies
+        res.status(200).json(movies);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
 app.use('/', router);
 
 const PORT = process.env.PORT || 8080;
