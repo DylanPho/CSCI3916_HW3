@@ -1,14 +1,17 @@
 {
-  "name": "csc3916_hw3",
+  "name": "CSCI3916_HW3",
   "version": "1.0.0",
   "description": "Web API 3916 Homework 3",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 10000 --exit"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shawnmccarthy/CSC3916_HW3.git"
+    "url": "https://github.com/DylanPho/CSCI3916_HW3.git"
   },
   "keywords": [
     "Movie"
@@ -16,9 +19,9 @@
   "author": "Shawn McCarthy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shawnmccarthy/CSC3916_HW3/issues"
+    "url": "https://github.com/DylanPho/CSCI3916_HW3/issues"
   },
-  "homepage": "https://github.com/shawnmccarthy/CSC3916_HW3#readme",
+  "homepage": "https://github.com/DylanPho/CSCI3916_HW3#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
