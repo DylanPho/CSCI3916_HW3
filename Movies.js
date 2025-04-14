@@ -15,17 +15,25 @@ connectDB();
 
 // Movie schema
 const MovieSchema = new mongoose.Schema({
-  title: { type: String, required: true, index: true },
-  releaseDate: { type: Number, min: [1900, 'Must be greater than 1899'], max: [2100, 'Must be less than 2100'] },
-  genre: { 
-      type: String, 
-      enum: ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller', 'Western', 'Science Fiction'],
-      required: true
+  title: { type: String, required: true },
+  releaseDate: {
+    type: Number,
+    required: true,
+    min: [1900, 'Must be after 1899'],
+    max: [2100, 'Must be before 2100']
   },
-  actors: [{
-      actorName: { type: String, required: true },
-      characterName: { type: String, required: true }
-  }]
+  genre: {
+    type: String,
+    required: true,
+    enum: ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller', 'Western', 'Science Fiction']
+  },
+  actors: {
+    type: [{
+      actorName: String,
+      characterName: String
+    }],
+    required: [true, 'Actors field is required']
+  }
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);

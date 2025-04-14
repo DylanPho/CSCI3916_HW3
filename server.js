@@ -96,13 +96,13 @@ router.get('/movies/:title', requireAuth, async (req, res) => {
 // POST create new movie
 router.post('/movies', requireAuth, async (req, res) => {
     try {
-        const newMovie = new Movie(req.body);
-        await newMovie.save();
-        res.status(201).json({ success: true, message: "Movie added successfully" });
+      const movie = new Movie(req.body);
+      await movie.save();
+      res.status(201).json({ success: true, message: 'Movie added successfully' });
     } catch (err) {
-        res.status(400).json({ success: false, message: err.message });
+      res.status(400).json({ success: false, message: err.message });
     }
-});
+  });  
 
 // PUT update movie by title
 router.put('/movies/:title', requireAuth, async (req, res) => {
